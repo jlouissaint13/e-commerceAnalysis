@@ -94,9 +94,9 @@ top: 62px;
 }
 
 .textField .MuiFilledInput-underline:after {
-  border-bottom: 2px solid rgb(76, 36, 164); /* Focus and unfocused state will have the same border color */
+  border-bottom: 2px solid rgb(76, 36, 164);
 }
 
 .textField .MuiInputLabel-root.Mui-focused {
-  color: rgb(76, 36, 164); /* Keep label color the same on focus */
+  color: rgb(76, 36, 164);
 }

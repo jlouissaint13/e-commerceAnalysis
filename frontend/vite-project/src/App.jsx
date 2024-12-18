@@ -10,6 +10,7 @@ import './App.css'
 
 
 function App() {
+    //Sets the state for the username and password; Both of these states are updated through the textFields
 const [username,setUsername] = useState('');
 const [password,setPassword] = useState('');
     //Function for creation of an account
@@ -18,7 +19,13 @@ const [password,setPassword] = useState('');
     }
     //Going to control the logic for logging in and possibly connect with the backend
     function login() {
-        alert("Placeholder")
+        if (username === "jared" && password === '123') {
+            alert("Password Success")
+            return;
+        }
+        alert("Invalid password")
+
+
 
     }
     //Control the function for continue as guest
