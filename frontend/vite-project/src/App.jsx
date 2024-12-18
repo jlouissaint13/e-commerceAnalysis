@@ -43,17 +43,18 @@ function App() {
             <TextField
                 id="loginField"
                 label="Email"
-                variant="standard"
+                variant="filled"
                 size="small"
-
+                className="textField"
 
             />
             <div>
                 <TextField
                     id="passwordField"
                     label="Password"
-                    variant="standard"
+                    variant="filled"
                     size="small"
+                    className="textField"
                     />
             </div>
             <div>
