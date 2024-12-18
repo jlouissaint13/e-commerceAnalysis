@@ -59,9 +59,7 @@ a:hover {
   color: #747bff;
 }
 
-.textField {
-  color: rgb(76, 36, 164);
-}
+
 
 .textField .MuiInputLabel-root {
   color: rgb(76, 36, 164) !important;
@@ -70,10 +68,6 @@ a:hover {
 .textField .MuiInput-root {
   color: rgb(76, 36, 164);
 }
-.textField .MuiInput-root {
-  color: #ff6347;
-}
-
 
 .textField .MuiFilledInput-underline:before {
   border-bottom: 2px solid rgb(76, 36, 164);
