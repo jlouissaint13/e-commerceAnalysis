@@ -2,36 +2,56 @@ import { useState } from 'react'
 import {TextField} from "@mui/material";
 import {Helmet} from "react-helmet";
 import logo from './assets/cirlceRounded.png'
+import axios from "axios";
 import './App.css'
-
-
-
-
 
 
 function App() {
     //Sets the state for the username and password; Both of these states are updated through the textFields
-const [username,setUsername] = useState('');
-const [password,setPassword] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    //if text is empty invalid
+    function isEmpty(username, password) {
+
+        return username.length === 0 || password.length === 0;
+    }
+
+    //if email contains @ and .com return true as email is valid
+
+
     //Function for creation of an account
     function createAccount() {
         alert("Placeholder");
     }
+
     //Going to control the logic for logging in and possibly connect with the backend
-    function login() {
-        if (username === "jared" && password === '123') {
-            alert("Password Success")
+    //Fix email validation bug that's breaking code
+    //make sure isEmpty is good and check it
+    function login(event) {
+        event.preventDefault();
+
+
+        if (isEmpty(username, password)) {
+            alert("Please enter all fields")
             return;
         }
-        alert("Invalid password")
-
-
-
+        if (username === 'Jared' && password === "123") alert("Logging in....")
     }
+    //Only works if on click is triggered first fix that later
+   const enter = (event) => {
+        if (event.key === 'Enter') {
+            login(event);
+        }
+   };
+
+
+
     //Control the function for continue as guest
     function continueAsGuest(prop) {
         alert(`PlaceHolder`);
     }
+
 
     return (
         <>
@@ -72,7 +92,7 @@ const [password,setPassword] = useState('');
             <div>
 
 
-                <button id={"loginButton"} onClick={login}>Login</button>
+                <button id={"loginButton"} onKeyDown={enter}   onClick={login}>Login</button>
             </div>
             <div>
                 <button id={"createButton"} onClick={createAccount}>Create Account</button>
