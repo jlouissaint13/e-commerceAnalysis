@@ -58,8 +58,28 @@ button:focus-visible {
 a:hover {
   color: #747bff;
 }
-
-
+#loginText{
+  position: relative;
+}
+#loginButton{
+  position: relative;
+  left: 89px;
+  width: 120px;
+  top: 3px;
+}
+#createButton{
+  position: relative;
+  top: 60px;
+  width: 300px;
+}
+#guestButton{
+  position: relative;
+top: 62px;
+  width: 300px;
+}
+.textField{
+  width: 300px;
+}
 
 .textField .MuiInputLabel-root {
   color: rgb(76, 36, 164) !important;
