@@ -2,7 +2,7 @@ from flask import jsonify
 from pymongo import MongoClient
 #For the connection to the database
 client = MongoClient('mongodb://localhost:27017')
-db = client['db']
+db = client['test']
 userCollections = db['usersdb']
 
 class CreateModel:

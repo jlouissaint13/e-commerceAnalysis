@@ -1,8 +1,10 @@
 from flask import jsonify
 from pymongo import MongoClient
+from sqlalchemy import false
+
 #For the connection to the database
 client = MongoClient('mongodb://localhost:27017')
-db = client['db']
+db = client['test']
 userCollections = db['usersdb']
 
 class LoginModel:
@@ -18,6 +20,14 @@ class LoginModel:
     def loginUser(self):
 
         user = userCollections.find_one({'email': self.email})
+        #If and only if user exist then check for password
+        #return true otherwise continue and return false
+        if user:
+            if self.password == user['password']:
+                print("Login successful")
+                return True
+        print("Your username or password is incorrect")
+        return False
 
 
         #add logic to check if email exist
@@ -30,7 +40,7 @@ class LoginModel:
 login = LoginModel('jared@gmail.com','safe123')
 
 
-print(userCollections.find_one({'email': login.getPassword()}))
+
 
 
 
