@@ -28,22 +28,20 @@ function App() {
     //Going to control the logic for logging in and possibly connect with the backend
     //Fix email validation bug that's breaking code
     //make sure isEmpty is good and check it
-    function login(event) {
+    async function login(event) {
         event.preventDefault();
 
-
-        if (isEmpty(username, password)) {
-            alert("Please enter all fields")
-            return;
-        }
-        if (username === 'Jared' && password === "123") alert("Logging in....")
+        const response = await axios.post('http://localhost:5000/user', {
+            username: 'jared',  // or simply 'username' if the variable name matches
+            password: 'password'   // same for password
+        }, {
+            headers: {
+                'Content-Type': 'application/json'  // Ensure the content type is set to JSON
+            }
+        });
     }
     //Only works if on click is triggered first fix that later
-   const enter = (event) => {
-        if (event.key === 'Enter') {
-            login(event);
-        }
-   };
+
 
 
 
@@ -92,7 +90,7 @@ function App() {
             <div>
 
 
-                <button id={"loginButton"} onKeyDown={enter}   onClick={login}>Login</button>
+                <button id={"loginButton"}  onClick={login}>Login</button>
             </div>
             <div>
                 <button id={"createButton"} onClick={createAccount}>Create Account</button>

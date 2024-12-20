@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template, jsonify
 
 app = Flask(__name__)
 
@@ -10,5 +10,8 @@ def hello_world():
 def test():
     return 'Testing'
 
+@app.route('/login')
+def login():
+    return 'Login'
 if __name__ == '__main__':
     app.run()
