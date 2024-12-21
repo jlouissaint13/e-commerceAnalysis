@@ -10,39 +10,65 @@ function App() {
     //Sets the state for the username and password; Both of these states are updated through the textFields
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const loginData = {
+        username: username,
+        password: password
 
+    }
+    //resets username and password after they are used
+    function clear(u) {
+       setUsername('');
+       setPassword('');
+    }
     //if text is empty invalid
     function isEmpty(username, password) {
 
-        return username.length === 0 || password.length === 0;
+        return ((!username || username.length === 0) ||(!password || password.length === 0) );
     }
 
     //if email contains @ and .com return true as email is valid
+    //if time replace with a regex
+    function emailValidation() {
+        return (username.includes('@') && username.includes('.com'));
 
+    }
 
     //Function for creation of an account
     function createAccount() {
         alert("Placeholder");
     }
+    async function login() {
+        alert("working")
+        alert('active button');
 
-    //Going to control the logic for logging in and possibly connect with the backend
-    //Fix email validation bug that's breaking code
-    //make sure isEmpty is good and check it
-    async function login(event) {
-        event.preventDefault();
 
-        const response = await axios.post('http://localhost:5000/user', {
-            username: 'jared',  // or simply 'username' if the variable name matches
-            password: 'password'   // same for password
-        }, {
-            headers: {
-                'Content-Type': 'application/json'  // Ensure the content type is set to JSON
-            }
-        });
+        if (isEmpty() || emailValidation()) {
+            alert("Something is empty");
+            return;
+        }
+        try{
+            const res = await fetch('http://localhost:8000/recieve', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(loginData),
+            });
+        }catch (error) {
+            alert(error)
+        }
+        alert("data sent clearing....")
+        clear()
+
+
+
+
+
+
     }
+
+
     //Only works if on click is triggered first fix that later
-
-
 
 
     //Control the function for continue as guest
@@ -53,9 +79,9 @@ function App() {
 
     return (
         <>
-           <Helmet>
-               <title>Welcome to DataSight!</title>
-           </Helmet>
+            <Helmet>
+                <title>Welcome to DataSight!</title>
+            </Helmet>
             <div>
 
             </div>
@@ -85,12 +111,12 @@ function App() {
                     size="small"
                     className="textField"
                     onChange={event => setPassword(event.target.value)}
-                    />
+                />
             </div>
             <div>
 
 
-                <button id={"loginButton"}  onClick={login}>Login</button>
+                <button id={"loginButton"} onClick={login}>Login</button>
             </div>
             <div>
                 <button id={"createButton"} onClick={createAccount}>Create Account</button>
@@ -102,5 +128,6 @@ function App() {
     );
 
 }
+
 
 export default App
