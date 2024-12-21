@@ -37,7 +37,7 @@ class LoginModel:
     def __str__(self):
         return f'{self.email} and {self.password}'
 #testing new to this
-login = LoginModel('jared@gmail.com','safe123')
+
 
 
 
