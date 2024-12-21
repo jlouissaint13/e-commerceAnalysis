@@ -65,7 +65,7 @@ function App() {
         }
 
         try {
-            const res = await fetch('http://localhost:8000/recieve', {
+            const res = await fetch('http://localhost:8000/login/submit', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
