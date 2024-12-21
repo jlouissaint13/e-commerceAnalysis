@@ -10,26 +10,34 @@ function App() {
     //Sets the state for the username and password; Both of these states are updated through the textFields
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const loginData = {
-        username: username,
-        password: password
+    const [invalidEmail, setInvalidEmail] = useState(false);
+    const [emptyEmail,setEmptyEmail] = useState(false);
+    const [emptyPassword,setEmptyPassword] = useState(false);
 
-    }
+
     //resets username and password after they are used
-    function clear(u) {
-       setUsername('');
-       setPassword('');
+    function clear() {
+        setUsername('');
+        setPassword('');
     }
-    //if text is empty invalid
-    function isEmpty(username, password) {
 
-        return ((!username || username.length === 0) ||(!password || password.length === 0) );
-    }
+    //function to check if text is empty
+  function isEmpty(textField) {
+       //if null or empty return true
+        if (!textField || textField === '' ) return true;
+        //else return false
+        return false
+  }
+
 
     //if email contains @ and .com return true as email is valid
     //if time replace with a regex
     function emailValidation() {
-        return (username.includes('@') && username.includes('.com'));
+        if (username.includes('@') && username.includes('.com')) {
+            return true;
+        }
+        return false;
+
 
     }
 
@@ -37,34 +45,48 @@ function App() {
     function createAccount() {
         alert("Placeholder");
     }
-    async function login() {
-        alert("working")
-        alert('active button');
 
+    async function login(event) {
 
-        if (isEmpty() || emailValidation()) {
-            alert("Something is empty");
+        const loginData = {
+            username: username,
+            password: password
+
+        }
+        if (emailValidation() === false) {
+            setInvalidEmail(true);
+
             return;
         }
-        try{
+        if (isEmpty(username)) {
+            alert("is empty")
+            setEmptyEmail(true);
+
+        }
+
+        try {
             const res = await fetch('http://localhost:8000/recieve', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(loginData),
+
             });
-        }catch (error) {
+            setInvalidEmail(false);
+            setEmptyEmail(false);
+            clear();
+            alert("Look good sending data through!")
+        } catch (error) {
             alert(error)
         }
-        alert("data sent clearing....")
-        clear()
 
+    }
 
+    function helperText() {
+        if (emptyEmail) return "Please enter an email"
 
-
-
-
+        if (invalidEmail) return "Please enter a valid email"
     }
 
 
@@ -101,7 +123,13 @@ function App() {
                 className="textField"
                 //This line changes the state of the userName field and reacts to any changes made in the textBox
                 onChange={event => setUsername(event.target.value)}
+                error={invalidEmail || emptyEmail}
+                helperText={helperText()}
+
+
+
             />
+
             <div>
                 <TextField
                     id="passwordField"
@@ -116,7 +144,11 @@ function App() {
             <div>
 
 
-                <button id={"loginButton"} onClick={login}>Login</button>
+                <button id={"loginButton"}
+
+                        onClick={login}>Login
+
+                </button>
             </div>
             <div>
                 <button id={"createButton"} onClick={createAccount}>Create Account</button>
@@ -128,6 +160,7 @@ function App() {
     );
 
 }
+
 
 
 export default App
