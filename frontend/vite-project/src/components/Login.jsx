@@ -46,25 +46,43 @@ function Login() {
     }
 
     async function login(event) {
-
+        //To reset the state of the errors
+        resetErrors();
+        let validForm = true;
         const loginData = {
             username: username,
             password: password
 
         }
+
+        if (isEmpty(username)) {
+            setEmptyEmail(true);
+            validForm = false;
+            alert("isempty username");
+
+        }
+
         if (emailValidation() === false) {
             setInvalidEmail(true);
+            validForm = false;
+            alert("username validation");
 
+        }
+
+        if (isEmpty(password)) {
+            setEmptyPassword(true);
+            validForm = false;
+            alert("isempty password");
+        }
+        // if form is not valid retrun
+        if (!validForm) {
+            alert("error check");
             return;
         }
-        if (isEmpty(username)) {
-            alert("is empty")
-            setEmptyEmail(true);
 
-        }
 
         try {
-            const res = await fetch('http://localhost:8000/login/submit', {
+            const response = await fetch('http://localhost:8000/login/submit', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -72,9 +90,8 @@ function Login() {
                 body: JSON.stringify(loginData),
 
             });
-            setInvalidEmail(false);
-            setEmptyEmail(false);
-            clear();
+
+
             alert("Look good sending data through!")
         } catch (error) {
             alert(error)
@@ -82,13 +99,21 @@ function Login() {
 
     }
 
-    function helperText() {
+    function emailError() {
         if (emptyEmail) return "Please enter an email"
 
         if (invalidEmail) return "Please enter a valid email"
+
     }
-
-
+    function passwordError() {
+        if (emptyPassword) return "Please enter your password"
+    }
+    // function to reset the status of my errors back to false
+    function resetErrors() {
+        setInvalidEmail(false);
+        setEmptyEmail(false);
+        setEmptyPassword(false);
+    }
     //Only works if on click is triggered first fix that later
 
 
@@ -120,10 +145,11 @@ function Login() {
                 variant="filled"
                 size="small"
                 className="textField"
+
                 //This line changes the state of the userName field and reacts to any changes made in the textBox
                 onChange={event => setUsername(event.target.value)}
                 error={invalidEmail || emptyEmail}
-                helperText={helperText()}
+                helperText={emailError()}
 
 
 
@@ -133,11 +159,12 @@ function Login() {
                 <TextField
                     id="passwordField"
                     label="Password"
-
                     variant="filled"
                     size="small"
                     className="textField"
                     onChange={event => setPassword(event.target.value)}
+                    error={emptyPassword}
+                    helperText={passwordError()}
                 />
             </div>
             <div>

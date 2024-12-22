@@ -8,15 +8,18 @@ db = client['test']
 userCollections = db['usersdb']
 
 class LoginModel:
+    #Start with false authetication status that we will set to true if loginUser is true
+
     def __init__(self,email,password):
         self.email = email
         self.password = password
-        #calling the method to run when the constructor is initilized
-        self.loginUser()
+
+
     def getEmail(self):
         return self.email
     def getPassword(self):
         return self.password
+    #function to check if login exists inside the database
     def loginUser(self):
 
         user = userCollections.find_one({'email': self.email})
@@ -28,11 +31,6 @@ class LoginModel:
                 return True
         print("Your username or password is incorrect")
         return False
-
-
-        #add logic to check if email exist
-        #add logic to check if email returns a password
-        #add logic to make sure email is not null
 
     def __str__(self):
         return f'{self.email} and {self.password}'
