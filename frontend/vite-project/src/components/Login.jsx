@@ -12,6 +12,8 @@ function Login() {
     const [invalidEmail, setInvalidEmail] = useState(false);
     const [emptyEmail,setEmptyEmail] = useState(false);
     const [emptyPassword,setEmptyPassword] = useState(false);
+    //if the username or password is wrong
+    const [invalidInformation,setInvalidInformation] = useState(false);
 
 
     //resets username and password after they are used
@@ -90,9 +92,17 @@ function Login() {
                 body: JSON.stringify(loginData),
 
             });
+            if (response.status === 200) {
+
+                alert("successful");
+            }
+            else{
+                alert("invalid information");
+                setInvalidInformation(true);
+            }
 
 
-            alert("Look good sending data through!")
+
         } catch (error) {
             alert(error)
         }
@@ -100,19 +110,23 @@ function Login() {
     }
 
     function emailError() {
-        if (emptyEmail) return "Please enter an email"
+        if (emptyEmail) return "Please enter an email";
 
-        if (invalidEmail) return "Please enter a valid email"
+        if (invalidEmail) return "Please enter a valid email";
+
+        if (invalidInformation) return "";
 
     }
     function passwordError() {
-        if (emptyPassword) return "Please enter your password"
+        if (emptyPassword) return "Please enter your password";
+        if (invalidInformation) return "Your email or password is incorrect";
     }
     // function to reset the status of my errors back to false
     function resetErrors() {
         setInvalidEmail(false);
         setEmptyEmail(false);
         setEmptyPassword(false);
+        setInvalidInformation(false);
     }
     //Only works if on click is triggered first fix that later
 
@@ -148,7 +162,7 @@ function Login() {
 
                 //This line changes the state of the userName field and reacts to any changes made in the textBox
                 onChange={event => setUsername(event.target.value)}
-                error={invalidEmail || emptyEmail}
+                error={invalidEmail || emptyEmail || invalidInformation}
                 helperText={emailError()}
 
 
@@ -163,7 +177,7 @@ function Login() {
                     size="small"
                     className="textField"
                     onChange={event => setPassword(event.target.value)}
-                    error={emptyPassword}
+                    error={emptyPassword || invalidInformation}
                     helperText={passwordError()}
                 />
             </div>
