@@ -11,7 +11,6 @@
   -moz-osx-font-smoothing: grayscale;
 
 }
-
 a {
   font-weight: 500;
   color: #646cff;
@@ -58,9 +57,19 @@ button:focus-visible {
 
 a:hover {
   color: #747bff;
+
+
+}
+/*All IDs loginPage */
+#logoC {
+  position: relative;
+  left: -600px;
+  width: 400px;
+  height: 400px;
 }
 #loginText{
   position: relative;
+
 }
 #loginButton{
   position: relative;
@@ -78,11 +87,34 @@ a:hover {
 top: 62px;
   width: 300px;
 }
+
+
+
+
+/*All IDs creationPage */
+#welcomeText{
+  position: relative;
+  top: -300px;
+}
+
+#lastName{
+  position: relative;
+  top: 200px;
+}
+
+
+
+/*All Classes */
 .textField{
   width: 300px;
   -webkit-text-fill-color: white;
 }
+#firstName{
+  position: relative;
 
+
+
+}
 .textField .MuiInputLabel-root {
   color: rgb(76, 36, 164) !important;
 }

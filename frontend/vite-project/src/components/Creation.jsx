@@ -2,7 +2,8 @@ import {use, useState} from 'react'
 import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {Helmet} from "react-helmet";
 import logo from '../assets/cirlceRounded.png';
-import "../App.css";
+import "./Creation.css";
+
 
 
 function Creation() {
@@ -29,23 +30,24 @@ function createAccount() {
         <Helmet>
             <title>Create Account</title>
         </Helmet>
-        <h1>
-           Create an account with us today!
-        </h1>
-            <div>
-            <img src={logo} alt="data driven logo"/>
-            </div>
+
+                <h1 id={"welcomeText"}>Create an account with us today! </h1>
+
+            <div className="form-container">
 
             <TextField
-                id="loginField"
+                id="firstName"
                 label="First Name"
                 variant="filled"
                 size="small"
                 className="textField"
 
             />
+            </div>
+
+            
             <TextField
-                id="loginField"
+                id="lastName"
                 label="Last Name"
                 variant="filled"
                 size="small"
@@ -53,7 +55,7 @@ function createAccount() {
 
             />
             <TextField
-                id="loginField"
+                id="email"
                 label="email"
                 variant="filled"
                 size="small"
@@ -61,7 +63,7 @@ function createAccount() {
 
             />
             <TextField
-                id="loginField"
+                id="password"
                 label="password"
                 variant="filled"
                 size="small"
@@ -69,26 +71,26 @@ function createAccount() {
 
             />
             <TextField
-                id="loginField"
+                id="address"
                 label="address"
                 variant="filled"
                 size="small"
                 className="textField"
 
             />
-
-            <FormControl className="textField"> {}
+            
+            <FormControl className="textField"> {"What are you looking for?"}
                 <InputLabel id="choice"></InputLabel>
                 <Select
                     labelId="dropDownLabel"
                     id="choice"
 
-
+                    size="small"
                     variant="filled"
                 >
-                    <MenuItem value={10}>Data analysis to make data driven decisions</MenuItem>
-                    <MenuItem value={20}>Insightful data visualization </MenuItem>
-                    <MenuItem value={30}>Descriptive analytics for summarizing my data</MenuItem>
+                    <MenuItem value={1}>Data analysis to make data driven decisions</MenuItem>
+                    <MenuItem value={2}>Insightful data visualization </MenuItem>
+                    <MenuItem value={3}>Descriptive analytics for summarizing my data</MenuItem>
                 </Select>
             </FormControl>
 

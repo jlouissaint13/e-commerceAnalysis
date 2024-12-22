@@ -60,7 +60,7 @@ function Login() {
         if (isEmpty(username)) {
             setEmptyEmail(true);
             validForm = false;
-            alert("isempty username");
+            alert("empty username");
 
         }
 
@@ -74,7 +74,7 @@ function Login() {
         if (isEmpty(password)) {
             setEmptyPassword(true);
             validForm = false;
-            alert("isempty password");
+            alert("empty password");
         }
         // if form is not valid retrun
         if (!validForm) {
@@ -109,7 +109,7 @@ function Login() {
     }
 
     function emailError() {
-        if (emptyEmail) return "Please enter an email";
+        if (emptyEmail) return "Please enter your email";
 
         if (invalidEmail) return "Please enter a valid email";
 
