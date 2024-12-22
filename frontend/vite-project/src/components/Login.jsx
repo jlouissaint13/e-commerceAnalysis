@@ -94,7 +94,6 @@ function Login() {
             });
             if (response.status === 200) {
 
-                alert("successful");
             }
             else{
                 alert("invalid information");
