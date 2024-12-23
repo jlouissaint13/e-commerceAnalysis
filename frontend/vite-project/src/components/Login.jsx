@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import {TextField} from "@mui/material";
+import {IconButton, InputAdornment, TextField} from "@mui/material";
 import {Helmet} from "react-helmet";
 import logo from '../assets/cirlceRounded.png';
 import "../App.css";
+import {Visibility, VisibilityOff} from "@mui/icons-material";
 
 
 function Login() {
@@ -173,12 +174,16 @@ function Login() {
                 <TextField
                     id="passwordField"
                     label="Password"
+                    type={"password"}
                     variant="filled"
                     size="small"
                     className="textField"
                     onChange={event => setPassword(event.target.value)}
                     error={emptyPassword || invalidInformation}
                     helperText={passwordError()}
+
+
+
                 />
             </div>
             <div>
