@@ -81,20 +81,23 @@ a:hover {
 
 /*All IDs creationPage */
 #welcomeText{
-    position: relative;
-    top: -300px;
-}
-
-#firstName {
-    position: relative;
-    top: 30px;
-}
-
-#lastName {
-    position: relative;
+    position: absolute;
     top: 50px;
+    left: 900px;
 }
-
+#logoC{
+    position: relative;
+    top: -100px;
+    left: -450px;
+    width: 400px;
+    height: 400px;
+}
+#createButton{
+    position: relative;
+    top: -90px;
+   left: 350px;
+    z-index: 20;
+}
 
 /*All Classes */
 .textField{

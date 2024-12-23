@@ -82,7 +82,7 @@ function Login() {
             validForm = false;
             alert("empty password");
         }
-        // if form is not valid retrun
+        // if form is not valid return
         if (!validForm) {
             alert("error check");
             return;
@@ -174,7 +174,7 @@ function Login() {
                 <TextField
                     id="passwordField"
                     label="Password"
-                    type={"password"}
+                    type="password"
                     variant="filled"
                     size="small"
                     className="textField"
@@ -188,12 +188,12 @@ function Login() {
             </div>
             <div>
 
-
                 <button  id={"loginButton"}
                         onKeyDown={handleKeyDown}
                         onClick={login}>Login
 
                 </button>
+
             </div>
             <div>
                 <button id={"createButton"} onClick={createAccount}>Create Account</button>

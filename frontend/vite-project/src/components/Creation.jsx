@@ -32,56 +32,100 @@ function createAccount() {
         </Helmet>
 
                 <h1 id={"welcomeText"}>Create an account with us today! </h1>
+                <div>
+                    <img id={"logoC"} src={logo} alt={"Turning Data Into Decisions"}/>
+                </div>
+            <div>
 
+            </div>
             <div className="form-container">
 
             <TextField
-                id="firstName"
+
                 label="First Name"
                 variant="filled"
-                size="small"
+                size="medium"
                 className="textField"
-
+                style={{
+                    position: "absolute",
+                    top: '220px',
+                    left: '940px',
+                }}
             />
             </div>
 
+            <TextField
+                label={"Last Name"}
+                variant="filled"
+                size="medium"
+                className="textField"
+                style={{
+                    position: "absolute",
+                    top: '220px',
+                    right: '200px',
+                }}
+            />
+            <TextField
+
+                label="Email"
+                variant="filled"
+                size="medium"
+                className="textField"
+                style={{
+                    position: "absolute",
+                    top: '300px',
+                    left: '940px',
+
+                }}
+            />
+            <TextField
+
+                label="Password"
+                variant="filled"
+                size="medium"
+                className="textField"
+                style={{
+                    position: "absolute",
+                    top: '300px',
+                    left: '1300px',
+                }}
+            />
+            <TextField
+
+                label="Address"
+                variant="filled"
+                size="medium"
+                className="textField"
+                style={{
+                    position: "absolute",
+                    top: '380px',
+                    left: '940px',
+                }}
+                />
+            <TextField
+
+                label="Phone Number"
+                variant="filled"
+                size="medium"
+                className="textField"
+                style={{
+                    position: "absolute",
+                    top: '380px',
+                    left: '1300px',
+                }}
+
+            />
             
-            <TextField
-                id="lastName"
-                label="Last Name"
-                variant="filled"
-                size="small"
-                className="textField"
+            <FormControl  style={{
+                position: 'absolute',
+                top: '480px',
+                left: '1100px',
 
-            />
-            <TextField
-                id="email"
-                label="email"
-                variant="filled"
-                size="small"
-                className="textField"
-
-            />
-            <TextField
-                id="password"
-                label="password"
-                variant="filled"
-                size="small"
-                className="textField"
-
-            />
-            <TextField
-                id="address"
-                label="address"
-                variant="filled"
-                size="small"
-                className="textField"
-
-            />
-            
-            <FormControl className="textField"> {"What are you looking for?"}
+            }} className="textField"> {"What are you looking for?"}
                 <InputLabel id="choice"></InputLabel>
+
                 <Select
+
                     labelId="dropDownLabel"
                     id="choice"
 
@@ -92,6 +136,7 @@ function createAccount() {
                     <MenuItem value={2}>Insightful data visualization </MenuItem>
                     <MenuItem value={3}>Descriptive analytics for summarizing my data</MenuItem>
                 </Select>
+
             </FormControl>
 
 
