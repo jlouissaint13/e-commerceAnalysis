@@ -46,17 +46,22 @@ function Login() {
     function createAccount() {
         alert("Placeholder");
     }
+   function handleKeyDown(event) {
+        event.preventDefault() // to prevent the default of onclick from being called
+        if (event.key === "Enter") {
+            login()
+        }
+   }
 
     async function login(event) {
         //To reset the state of the errors
         resetErrors();
         let validForm = true;
         const loginData = {
-            username: username,
-            password: password
+            username: username.trim(),
+            password: password.trim()
 
         }
-
         if (isEmpty(username)) {
             setEmptyEmail(true);
             validForm = false;
@@ -81,8 +86,6 @@ function Login() {
             alert("error check");
             return;
         }
-
-
         try {
             const response = await fetch('http://localhost:8000/login/submit', {
                 method: 'POST',
@@ -99,8 +102,6 @@ function Login() {
                 alert("invalid information");
                 setInvalidInformation(true);
             }
-
-
 
         } catch (error) {
             alert(error)
@@ -183,8 +184,8 @@ function Login() {
             <div>
 
 
-                <button id={"loginButton"}
-
+                <button  id={"loginButton"}
+                        onKeyDown={handleKeyDown}
                         onClick={login}>Login
 
                 </button>
