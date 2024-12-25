@@ -7,12 +7,18 @@ import "./Creation.css";
 
 
 function Creation() {
+
 const [fname,setFname] = useState('');
 const [lname,setLname] = useState('');
 const [email,setEmail] = useState('');
 const [password,setPassword] = useState('');
 const [address,setAddress] = useState('');
 const [phoneNumber,setPhone] = useState('')
+
+
+
+
+
 
 function createAccount() {
     alert("Placeholder")
@@ -132,10 +138,10 @@ function continueGuest() {
 
             <FormControl style={{
                 position: 'absolute',
-                top: '800px',
+                top: '805px',
                 left: '1100px',
 
-            }} className="textField"> {"What are you looking for?"}
+            }} className="textField"> {"What specific assistance are you seeking?"}
                 <InputLabel id="choice"></InputLabel>
 
                 <Select
@@ -158,7 +164,7 @@ function continueGuest() {
                 <button id={"createButton"}
                         style={{
                             position: 'absolute',
-                            top: '900px',
+                            top: '920px',
                             left: '1100px',
 
                         }}
@@ -171,7 +177,7 @@ function continueGuest() {
                 <button id={"createButton"}
                         style={{
                             position: 'absolute',
-                            top: '945px',
+                            top: '965px',
                             left: '1100px',
 
                         }}
