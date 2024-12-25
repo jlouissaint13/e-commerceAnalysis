@@ -27,31 +27,37 @@ function createAccount() {
 
     return (
         <>
-        <Helmet>
-            <title>Create Account</title>
-        </Helmet>
+            <Helmet>
+                <title>Create Account</title>
+            </Helmet>
 
-                <h1 id={"welcomeText"}>Create an account with us today! </h1>
-                <div>
-                    <img id={"logoC"} src={logo} alt={"Turning Data Into Decisions"}/>
-                </div>
+            <h1 id={"welcomeText"}>Create an account with us today! </h1>
+            <div>
+                <img
+                    id="logoC"
+                    src={logo}
+                    alt="Turning Data Into Decisions"
+                    style={{width: '300px', height: '300px', left: '20px', top: '-300px'}}
+                />
+            </div>
+
             <div>
 
             </div>
             <div className="form-container">
 
-            <TextField
+                <TextField
 
-                label="First Name"
-                variant="filled"
-                size="medium"
-                className="textField"
-                style={{
-                    position: "absolute",
-                    top: '220px',
-                    left: '940px',
-                }}
-            />
+                    label="First Name"
+                    variant="filled"
+                    size="medium"
+                    className="textField"
+                    style={{
+                        position: "absolute",
+                        top: '540px',
+                        left: '940px',
+                    }}
+                />
             </div>
 
             <TextField
@@ -61,8 +67,8 @@ function createAccount() {
                 className="textField"
                 style={{
                     position: "absolute",
-                    top: '220px',
-                    right: '200px',
+                    top: '540px',
+                    left: '1300px',
                 }}
             />
             <TextField
@@ -73,7 +79,7 @@ function createAccount() {
                 className="textField"
                 style={{
                     position: "absolute",
-                    top: '300px',
+                    top: '630px',
                     left: '940px',
 
                 }}
@@ -86,7 +92,7 @@ function createAccount() {
                 className="textField"
                 style={{
                     position: "absolute",
-                    top: '300px',
+                    top: '630px',
                     left: '1300px',
                 }}
             />
@@ -98,10 +104,10 @@ function createAccount() {
                 className="textField"
                 style={{
                     position: "absolute",
-                    top: '380px',
+                    top: '720px',
                     left: '940px',
                 }}
-                />
+            />
             <TextField
 
                 label="Phone Number"
@@ -110,15 +116,15 @@ function createAccount() {
                 className="textField"
                 style={{
                     position: "absolute",
-                    top: '380px',
+                    top: '720px',
                     left: '1300px',
                 }}
 
             />
-            
-            <FormControl  style={{
+
+            <FormControl style={{
                 position: 'absolute',
-                top: '480px',
+                top: '800px',
                 left: '1100px',
 
             }} className="textField"> {"What are you looking for?"}
@@ -141,9 +147,30 @@ function createAccount() {
 
 
             <div>
-                <button id={"createButton"} onClick={createAccount}>Create Account</button>
+                <button id={"createButton"}
+                        style={{
+                            position: 'absolute',
+                            top: '900px',
+                            left: '1100px',
+
+                        }}
+                        onClick={createAccount}>Create Account
+                </button>
+
             </div>
 
+            <div>
+                <button id={"createButton"}
+                        style={{
+                            position: 'absolute',
+                            top: '955px',
+                            left: '1100px',
+
+                        }}
+                        onClick={createAccount}>Continue as Guest
+                </button>
+
+            </div>
         </>
     );
 }

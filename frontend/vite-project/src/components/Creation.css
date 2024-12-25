@@ -50,7 +50,7 @@ a:hover {
 }
 /*All IDs loginPage */
 #logoC {
-    position: relative;
+    position: absolute;
     left: -600px;
     width: 400px;
     height: 400px;
@@ -66,8 +66,8 @@ a:hover {
     top: 3px;
 }
 #createButton{
-    position: relative;
-    top: 60px;
+    position: absolute;
+    top: 100px;
     width: 300px;
 }
 #guestButton{
@@ -94,8 +94,8 @@ a:hover {
 }
 #createButton{
     position: relative;
-    top: -90px;
-   left: 350px;
+    top: 60px;
+   left: -30px;
     z-index: 20;
 }
 
