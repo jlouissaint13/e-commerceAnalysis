@@ -12,13 +12,15 @@ const [lname,setLname] = useState('');
 const [email,setEmail] = useState('');
 const [password,setPassword] = useState('');
 const [address,setAddress] = useState('');
-
+const [phoneNumber,setPhone] = useState('')
 
 function createAccount() {
     alert("Placeholder")
 }
 
-
+function continueGuest() {
+    alert("Placeholder")
+}
 
 
 
@@ -57,6 +59,7 @@ function createAccount() {
                         top: '540px',
                         left: '940px',
                     }}
+                    onChange={event => setFname(event.target.value)}
                 />
             </div>
 
@@ -70,6 +73,7 @@ function createAccount() {
                     top: '540px',
                     left: '1300px',
                 }}
+                onChange={event => setLname(event.target.value)}
             />
             <TextField
 
@@ -83,6 +87,7 @@ function createAccount() {
                     left: '940px',
 
                 }}
+                onChange={event => setEmail(event.target.value)}
             />
             <TextField
 
@@ -95,6 +100,7 @@ function createAccount() {
                     top: '630px',
                     left: '1300px',
                 }}
+                onChange={event => setPassword(event.target.value)}
             />
             <TextField
 
@@ -107,6 +113,7 @@ function createAccount() {
                     top: '720px',
                     left: '940px',
                 }}
+                onChange={event => setAddress(event.target.value)}
             />
             <TextField
 
@@ -119,6 +126,7 @@ function createAccount() {
                     top: '720px',
                     left: '1300px',
                 }}
+                onChange={event => setPhone(event.target.value)}
 
             />
 
@@ -163,11 +171,11 @@ function createAccount() {
                 <button id={"createButton"}
                         style={{
                             position: 'absolute',
-                            top: '955px',
+                            top: '945px',
                             left: '1100px',
 
                         }}
-                        onClick={createAccount}>Continue as Guest
+                        onClick={continueGuest}>Continue as Guest
                 </button>
 
             </div>
