@@ -1,4 +1,13 @@
 
+
+
+
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
 a {
     font-weight: 500;
     color: #646cff;
@@ -79,25 +88,6 @@ a:hover {
 
 
 
-/*All IDs creationPage */
-#welcomeText{
-    position: absolute;
-    top: 50px;
-    left: 900px;
-}
-#logoC{
-    position: relative;
-    top: -100px;
-    left: -450px;
-    width: 400px;
-    height: 400px;
-}
-#createButton{
-    position: relative;
-    top: 60px;
-   left: -30px;
-    z-index: 20;
-}
 
 /*All Classes */
 .textField{
@@ -124,3 +114,5 @@ a:hover {
 .textField .MuiInputLabel-root.Mui-focused {
     color: rgb(76, 36, 164);
 }
+
+

@@ -6,8 +6,8 @@ import Creation from './components/Creation.jsx'
 function App() {
     return (
         <div className="App">
-            <Creation/>
 
+            <Creation/>
         </div>
     );
 }

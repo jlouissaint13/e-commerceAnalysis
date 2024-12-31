@@ -2,7 +2,7 @@ import {use, useState} from 'react'
 import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {Helmet} from "react-helmet";
 import logo from '../assets/cirlceRounded.png';
-import "./Creation.css";
+import "../App.css";
 
 
 
@@ -21,7 +21,7 @@ const [phoneNumber,setPhone] = useState('')
 
 
 function createAccount() {
-    alert("Placeholder")
+
 }
 
 function continueGuest() {
@@ -45,7 +45,7 @@ function continueGuest() {
                     id="logoC"
                     src={logo}
                     alt="Turning Data Into Decisions"
-                    style={{width: '300px', height: '300px', left: '20px', top: '-300px'}}
+                    style={{position: "relative" ,width: '300px', height: '300px', left: '20px', top: '-250px'}}
                 />
             </div>
 
@@ -61,9 +61,9 @@ function continueGuest() {
                     size="medium"
                     className="textField"
                     style={{
-                        position: "absolute",
-                        top: '540px',
-                        left: '940px',
+                        position: "relative",
+                        top: '-200px',
+                        left: '-200px',
                     }}
                     onChange={event => setFname(event.target.value)}
                 />
@@ -75,9 +75,9 @@ function continueGuest() {
                 size="medium"
                 className="textField"
                 style={{
-                    position: "absolute",
-                    top: '540px',
-                    left: '1300px',
+                    position: "relative",
+                    top: '-255px',
+                    left: '600px',
                 }}
                 onChange={event => setLname(event.target.value)}
             />
@@ -88,10 +88,9 @@ function continueGuest() {
                 size="medium"
                 className="textField"
                 style={{
-                    position: "absolute",
-                    top: '630px',
-                    left: '940px',
-
+                    position: "relative",
+                    top: '-160px',
+                    left: '300px',
                 }}
                 onChange={event => setEmail(event.target.value)}
             />
@@ -102,9 +101,9 @@ function continueGuest() {
                 size="medium"
                 className="textField"
                 style={{
-                    position: "absolute",
-                    top: '630px',
-                    left: '1300px',
+                    position: "relative",
+                    top: '-160px',
+                    right: '350px',
                 }}
                 onChange={event => setPassword(event.target.value)}
             />
@@ -115,9 +114,9 @@ function continueGuest() {
                 size="medium"
                 className="textField"
                 style={{
-                    position: "absolute",
-                    top: '720px',
-                    left: '940px',
+                    position: "relative",
+                    top: '-60px',
+                    right: '650px',
                 }}
                 onChange={event => setAddress(event.target.value)}
             />
@@ -128,18 +127,18 @@ function continueGuest() {
                 size="medium"
                 className="textField"
                 style={{
-                    position: "absolute",
-                    top: '720px',
-                    left: '1300px',
+                    position: "relative",
+                    top: '-115px',
+                    left: '300px',
                 }}
                 onChange={event => setPhone(event.target.value)}
 
             />
 
             <FormControl style={{
-                position: 'absolute',
-                top: '805px',
-                left: '1100px',
+                position: 'relative',
+                top: '20px',
+                left: '-160px',
 
             }} className="textField"> {"What specific assistance are you seeking?"}
                 <InputLabel id="choice"></InputLabel>
@@ -163,9 +162,9 @@ function continueGuest() {
             <div>
                 <button id={"createButton"}
                         style={{
-                            position: 'absolute',
-                            top: '920px',
-                            left: '1100px',
+                            position: 'relative',
+                            top: '60px',
+                            left: '-10px',
 
                         }}
                         onClick={createAccount}>Create Account
@@ -176,9 +175,9 @@ function continueGuest() {
             <div>
                 <button id={"createButton"}
                         style={{
-                            position: 'absolute',
-                            top: '965px',
-                            left: '1100px',
+                            position: 'relative',
+                            top: '80px',
+                            left: '-10px',
 
                         }}
                         onClick={continueGuest}>Continue as Guest
