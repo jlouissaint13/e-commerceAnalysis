@@ -8,19 +8,55 @@ import "./Creation.css";
 
 function Creation() {
 
-const [fname,setFname] = useState('');
-const [lname,setLname] = useState('');
-const [email,setEmail] = useState('');
-const [password,setPassword] = useState('');
-const [address,setAddress] = useState('');
-const [phoneNumber,setPhone] = useState('')
-
-
-
-
+const forms = {
+    fname: '',
+    lname: '',
+    email:'',
+    password:'',
+    address:'',
+    phoneNumber:''
+}
+const [values,setValues] = useState(forms);
+const handleInputChange = (e) => {
+    const name = e.target;
+    const value = e.target;
+    setValues({
+        ...values,
+        [name]: value,
+    });
+}
+function isEmpty(textField) {
+    //if true then something isEmpty
+    if (!textField || textField === '') return true;
+    
+    return false;
+}
+function emailValidation() {
+    if (email.includes('@') && email.includes(".com")) return true;
+    return false;
+}
+function validForm() {
+    let flag = true;
+    let textFields = [forms.fname,forms.lname,forms.email,forms.password,forms.address,forms.phoneNumber];
+    for (let i = 0;i<textFields.length;i++) {
+        if (isEmpty(textFields[i])) {
+            flag = false;
+            break;
+        }
+        
+    }
+    return flag;
+}
 
 
 async function createAccount(event) {
+    alert("button")
+    
+    if (!validForm()) {
+        alert("Invalid");
+        return;
+    }
+    
     const userData = {
         username: email.trim(),
         password: password.trim()
@@ -89,7 +125,8 @@ function continueGuest() {
                         top: '-200px',
                         left: '-200px',
                     }}
-                    onChange={event => setFname(event.target.value)}
+                    onChange={event => handleInputChange(event.target.value)}
+                    
                 />
             </div>
 
@@ -103,7 +140,7 @@ function continueGuest() {
                     top: '-255px',
                     left: '600px',
                 }}
-                onChange={event => setLname(event.target.value)}
+                onChange={event => handleInputChange(event.target.value)}
             />
             <TextField
 
@@ -113,10 +150,11 @@ function continueGuest() {
                 className="textField"
                 style={{
                     position: "relative",
+                  
                     top: '-160px',
-                    left: '300px',
+                    right: '50px',
                 }}
-                onChange={event => setEmail(event.target.value)}
+                onChange={event => handleInputChange(event.target.value)}
             />
             <TextField
 
@@ -127,9 +165,9 @@ function continueGuest() {
                 style={{
                     position: "relative",
                     top: '-160px',
-                    right: '350px',
+                    left: '0px',
                 }}
-                onChange={event => setPassword(event.target.value)}
+                onChange={event => handleInputChange(event.target.value)}
             />
             <TextField
 
@@ -142,7 +180,7 @@ function continueGuest() {
                     top: '-60px',
                     right: '650px',
                 }}
-                onChange={event => setAddress(event.target.value)}
+                onChange={event => handleInputChange(event.target.value)}
             />
             <TextField
 
@@ -155,8 +193,7 @@ function continueGuest() {
                     top: '-115px',
                     left: '300px',
                 }}
-                onChange={event => setPhone(event.target.value)}
-
+                onChange={event => handleInputChange(event.target.value)}
             />
 
             <FormControl style={{

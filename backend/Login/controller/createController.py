@@ -6,7 +6,7 @@ from sqlalchemy import false
 
 from backend.Login.model.createModel import CreateModel
 
-createBlueprint = Blueprint('Register',__name__)
+createBlueprint = Blueprint('register',__name__)
 
 CreateModel = CreateModel
 
@@ -19,5 +19,6 @@ def receiveAccount():
     print(username,password)
     createModel1 = CreateModel(username,password)
     if(createModel1.createUser()):
+        print(username,password)
         return jsonify({"message: Valid submission continue"}),200
     return jsonify({"message: Invalid submission" }),401
