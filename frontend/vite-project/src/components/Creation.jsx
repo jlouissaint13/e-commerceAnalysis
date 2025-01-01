@@ -2,7 +2,7 @@ import {use, useState} from 'react'
 import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {Helmet} from "react-helmet";
 import logo from '../assets/cirlceRounded.png';
-import "../App.css";
+import "./Creation.css";
 
 
 
@@ -35,6 +35,9 @@ function continueGuest() {
 
     return (
         <>
+            
+            
+                
             <Helmet>
                 <title>Create Account</title>
             </Helmet>
@@ -184,6 +187,7 @@ function continueGuest() {
                 </button>
 
             </div>
+        
         </>
     );
 }
