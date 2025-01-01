@@ -20,8 +20,29 @@ const [phoneNumber,setPhone] = useState('')
 
 
 
-function createAccount() {
-
+async function createAccount(event) {
+    const userData = {
+        username: email.trim(),
+        password: password.trim()
+    };
+try{
+    const response = await fetch('http://localhost:8080/register/submit',{
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData)
+    
+    });
+if (response.status === 200) {
+    alert("Submission");
+}
+else{
+    alert("failure");
+}
+}catch (error) {
+    alert(error);
+}
 }
 
 function continueGuest() {
@@ -35,10 +56,10 @@ function continueGuest() {
 
     return (
         <>
-            
-            
-                
+
+
             <Helmet>
+                <script src="http://localhost:5173"></script>
                 <title>Create Account</title>
             </Helmet>
 

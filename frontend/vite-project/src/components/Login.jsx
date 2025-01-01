@@ -97,7 +97,7 @@ function Login() {
 
             });
             if (response.status === 200) {
-
+                
             }
             else{
                 alert("invalid information");
@@ -105,7 +105,7 @@ function Login() {
             }
 
         } catch (error) {
-            alert(error)
+            alert(error);
         }
 
     }
