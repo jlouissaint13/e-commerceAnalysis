@@ -4,8 +4,8 @@ from sqlalchemy import false
 
 #For the connection to the database
 client = MongoClient('mongodb://localhost:27017')
-db = client['test']
-userCollections = db['usersdb']
+db = client['usersdb']
+userCollections = db['users']
 
 class LoginModel:
     #Start with false authetication status that we will set to true if loginUser is true

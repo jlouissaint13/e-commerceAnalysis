@@ -11,8 +11,8 @@ function Creation() {
     
     
     const forms = {
-    fname: '',
-    lname: '',
+    fname:'',
+    lname:'',
     email:'',
     password:'',
     address:'',
@@ -23,7 +23,6 @@ const [values,setValues] = useState(forms);
 
     
 const handleInputChange = (event) => {
-    let flag = false;
     const {name,value} = event.target;
     
     setValues({
@@ -41,19 +40,19 @@ async function createAccount(event) {
         alert("forms invalid");
         return;
     }
-
-        if (!emailValidation(forms.email) || isEmpty(forms.email)) {
+    
+        if (!emailValidation(values.email) || isEmpty(values.email)) {
         alert("invalid email");
         return;
-    }
-    if (phoneValidation(forms.phoneNumber)) {
+        }
+    if (phoneValidation(values.phoneNumber)) {
         alert("invalid phone");
         return;
     }
-   
+   alert(values.email)
     const userData = {
-        username: forms.email.trim(),
-        password: forms.password.trim()
+        username: values.email.trim(),
+        password: values.password.trim()
     };
 try{
     const response = await fetch('http://localhost:8080/register/submit',{
@@ -102,9 +101,9 @@ function phoneValidation(phone) {
 function formsValid() {
     let flag = true;
     //Only put these four because the rest are check on there own. The point of this function is to check if all the forms are empty;
-    let forms = [forms.fname,forms.lname,forms.password,forms.address];
+    let form = [values.fname,values.lname,values.password,values.address];
     for(let i = 0;i<forms.length;i++) {
-        if (isEmpty(forms[i])) {
+        if (isEmpty(form[i])) {
             flag = false;
             break;
         }
@@ -150,7 +149,10 @@ function formsValid() {
                         top: '-200px',
                         left: '-200px',
                     }}
-                    onChange={event => handleInputChange(event.target.value)}
+                    //passing in the values into the handle input function;
+                    name={"fname"}
+                    value={values.fname}
+                    onChange={handleInputChange}
                     
                 />
             </div>
@@ -165,7 +167,9 @@ function formsValid() {
                     top: '-255px',
                     left: '600px',
                 }}
-                onChange={event => handleInputChange(event.target.value)}
+                name={"lname"}
+                value={values.lname}
+                onChange={handleInputChange}
             />
             <TextField
 
@@ -179,7 +183,9 @@ function formsValid() {
                     top: '-160px',
                     right: '50px',
                 }}
-                onChange={event => handleInputChange(event.target.value)}
+                name={"email"}
+                value={values.email}
+                onChange={handleInputChange}
             />
             <TextField
 
@@ -192,7 +198,9 @@ function formsValid() {
                     top: '-160px',
                     left: '0px',
                 }}
-                onChange={event => handleInputChange(event.target.value)}
+                name={"password"}
+                value={values.password}
+                onChange={handleInputChange}
             />
             <TextField
 
@@ -205,7 +213,9 @@ function formsValid() {
                     top: '-60px',
                     right: '650px',
                 }}
-                onChange={event => handleInputChange(event.target.value)}
+                name={"address"}
+                value={values.address}
+                onChange={handleInputChange}
             />
             <TextField
 
@@ -218,7 +228,9 @@ function formsValid() {
                     top: '-115px',
                     left: '300px',
                 }}
-                onChange={event => handleInputChange(event.target.value)}
+                name={"phoneNumber"}
+                value={values.phoneNumber}
+                onChange={handleInputChange}
             />
 
             <FormControl style={{
