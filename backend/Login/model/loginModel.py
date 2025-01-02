@@ -25,6 +25,7 @@ class LoginModel:
         user = userCollections.find_one({'email': self.email})
         #If and only if user exist then check for password
         #return true otherwise continue and return false
+        print("This is the login information for debugging purposes: ",user)
         if user:
             if self.password == user['password']:
                 print("Login successful")
