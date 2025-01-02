@@ -7,8 +7,10 @@ import "./Creation.css";
 
 
 function Creation() {
-
-const forms = {
+    
+    
+    
+    const forms = {
     fname: '',
     lname: '',
     email:'',
@@ -16,50 +18,42 @@ const forms = {
     address:'',
     phoneNumber:''
 }
+
 const [values,setValues] = useState(forms);
-const handleInputChange = (e) => {
-    const name = e.target;
-    const value = e.target;
+
+    
+const handleInputChange = (event) => {
+    let flag = false;
+    const {name,value} = event.target;
+    
     setValues({
         ...values,
         [name]: value,
     });
-}
-function isEmpty(textField) {
-    //if true then something isEmpty
-    if (!textField || textField === '') return true;
     
-    return false;
+    
 }
-function emailValidation() {
-    if (email.includes('@') && email.includes(".com")) return true;
-    return false;
-}
-function validForm() {
-    let flag = true;
-    let textFields = [forms.fname,forms.lname,forms.email,forms.password,forms.address,forms.phoneNumber];
-    for (let i = 0;i<textFields.length;i++) {
-        if (isEmpty(textFields[i])) {
-            flag = false;
-            break;
-        }
-        
-    }
-    return flag;
-}
-
 
 async function createAccount(event) {
     alert("button")
-    
-    if (!validForm()) {
-        alert("Invalid");
+    //if forms valid false return;
+    if (!formsValid()) {
+        alert("forms invalid");
         return;
     }
-    
+
+        if (!emailValidation(forms.email) || isEmpty(forms.email)) {
+        alert("invalid email");
+        return;
+    }
+    if (phoneValidation(forms.phoneNumber)) {
+        alert("invalid phone");
+        return;
+    }
+   
     const userData = {
-        username: email.trim(),
-        password: password.trim()
+        username: forms.email.trim(),
+        password: forms.password.trim()
     };
 try{
     const response = await fetch('http://localhost:8080/register/submit',{
@@ -86,6 +80,37 @@ function continueGuest() {
 }
 
 
+
+
+function isEmpty(textField) {
+        //if true then something isEmpty or null;
+        if (!textField || textField === '') return true;
+
+        return false;
+}
+function emailValidation(email) {
+        //if true then email is valid otherwise false
+        if (email.includes('@') && email.includes(".com")) return true;
+        return false;
+}
+function phoneValidation(phone) {
+    //if something is wrong like phone being shorter than 10 digits or not a number return false;
+    if (phone>10 || !isNaN(phone)) return false;
+    
+    return true;
+}
+function formsValid() {
+    let flag = true;
+    //Only put these four because the rest are check on there own. The point of this function is to check if all the forms are empty;
+    let forms = [forms.fname,forms.lname,forms.password,forms.address];
+    for(let i = 0;i<forms.length;i++) {
+        if (isEmpty(forms[i])) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
 
 
 
@@ -237,7 +262,7 @@ function continueGuest() {
                 <button id={"createButton"}
                         style={{
                             position: 'relative',
-                            top: '80px',
+                            top: '65px',
                             left: '-10px',
 
                         }}
