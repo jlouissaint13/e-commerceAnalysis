@@ -59,7 +59,7 @@ function Login() {
         resetErrors();
         let validForm = true;
         const loginData = {
-            username: username.trim(),
+            email: username.trim(),
             password: password.trim()
 
         }

@@ -1,4 +1,6 @@
 from crypt import methods
+from gzip import FNAME
+from multiprocessing.connection import address_type
 
 from click import password_option
 from flask import Flask,Blueprint,render_template,jsonify,request
@@ -8,17 +10,22 @@ from backend.Login.model.createModel import CreateModel
 
 createBlueprint = Blueprint('register',__name__)
 
-CreateModel = CreateModel
 
+#debugging print statements
 @createBlueprint.route('/submit',methods=['POST'])
 def receiveAccount():
+
     data = request.get_json()
-    
-    username = data.get('username')
+    fname = data.get('fname')
+    lname = data.get('lname')
+    email = data.get('email')
     password = data.get('password')
-    print(username,password)
-    createModel1 = CreateModel(username,password)
+    address = data.get('address')
+    phoneNumber = data.get('phoneNumber')
+    print(fname,lname,email,password,address,phoneNumber)
+    createModel1 = CreateModel(fname,lname,email,password,address,phoneNumber)
     if(createModel1.createUser()):
-        print(username,password)
-        return jsonify({"message: Valid submission continue"}),200
-    return jsonify({"message: Invalid submission" }),401
+        print(email,password)
+        return jsonify({"message": "Valid submission continue"}),200
+
+    return jsonify({"message": "Invalid submission" }),401

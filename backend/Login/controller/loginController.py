@@ -10,7 +10,7 @@ LoginModel = loginModel.LoginModel
 def receiveLogin():
     data = request.get_json()
 
-    username = data.get('username')
+    username = data.get('email')
     password = data.get('password')
     print(username,password)
     loginModel1 = LoginModel(username,password)

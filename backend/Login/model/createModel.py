@@ -1,3 +1,5 @@
+from gzip import FNAME
+
 from flask import jsonify
 from pymongo import MongoClient
 #For the connection to the database
@@ -6,17 +8,21 @@ db = client['usersdb']
 userCollections = db['users']
 
 class CreateModel:
-    def __init__(self,email,password):
+    def __init__(self,fname,lname,email,password,address,phoneNumber):
+        self.fname = fname
+        self.lname = lname
         self.email = email
         self.password = password
-       
+        self.address = address
+        self.phoneNumber = phoneNumber
     def createUser(self):
         #Will take create user data and insert it into the database
-        user = userCollections
+     
         
-        print("This is the user created account info for debugging purposes: " + self.email + self.password)
         if(self.userExists(self.email) == False):
-            user.insert_one({"email":self.email,"password":self.password})
+            userCollections.insert_one({"fname" : self.fname,"lname":self.lname,"email":self.email,"password":self.password,
+                                        "address":self.address,"phoneNumber":self.phoneNumber})
+            print("This is the user created account info for debugging purposes: " , self.email)
             return True
         print("Error")
         return False

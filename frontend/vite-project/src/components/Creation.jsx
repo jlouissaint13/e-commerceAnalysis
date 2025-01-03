@@ -49,14 +49,18 @@ async function createAccount(event) {
         alert("invalid phone");
         return;
     }
-   alert(values.email,values.password,values.address,values.phoneNumber);
+  
     
     const userData = {
-        username: values.email.trim(),
-        password: values.password.trim()
+        fname: values.fname.trim(),
+        lname: values.lname.trim(),
+        email: values.email.trim(),
+        password: values.password.trim(),
+        address: values.address.trim(),
+        phoneNumber: values.phoneNumber.trim()
     };
 try{
-    const response = await fetch('http://localhost:8080/register/submit',{
+    const response = await fetch('http://localhost:8000/register/submit',{
         method:'POST',
         headers: {
             'Content-Type': 'application/json',
