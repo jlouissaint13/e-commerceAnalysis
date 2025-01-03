@@ -36,11 +36,11 @@ const handleInputChange = (event) => {
 async function createAccount(event) {
     alert("button")
     //if forms valid false return;
-    if (!formsValid()) {
+  /*  if (!formsValid()) {
         alert("forms invalid");
         return;
     }
-    
+    */
         if (!emailValidation(values.email) || isEmpty(values.email)) {
         alert("invalid email");
         return;
@@ -49,7 +49,8 @@ async function createAccount(event) {
         alert("invalid phone");
         return;
     }
-   alert(values.email)
+   alert(values.email,values.password,values.address,values.phoneNumber);
+    
     const userData = {
         username: values.email.trim(),
         password: values.password.trim()

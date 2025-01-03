@@ -14,12 +14,9 @@ class CreateModel:
         #Will take create user data and insert it into the database
         user = userCollections
         
-        userData = {
-            "email":self.email,
-            "password":self.password
-        }
+        print("This is the user created account info for debugging purposes: " + self.email + self.password)
         if(self.userExists(self.email) == False):
-            user.insert_one(userData)
+            user.insert_one({"email":self.email,"password":self.password})
             return True
         print("Error")
         return False
