@@ -3,8 +3,8 @@ import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/materia
 import {Helmet} from "react-helmet";
 import logo from '../assets/cirlceRounded.png';
 import "./Creation.css";
-
-
+import {findVariableByName} from "eslint-plugin-react/lib/util/variable.js";
+import { useNavigate } from 'react-router-dom';
 
 function Creation() {
     
@@ -20,7 +20,8 @@ function Creation() {
 }
 
 const [values,setValues] = useState(forms);
-
+const [emptyField,setEmptyField] = useState('false');    
+const navigate = useNavigate();
     
 const handleInputChange = (event) => {
     const {name,value} = event.target;
@@ -34,13 +35,12 @@ const handleInputChange = (event) => {
 }
 
 async function createAccount(event) {
-    alert("button")
     //if forms valid false return;
-  /*  if (!formsValid()) {
-        alert("forms invalid");
+    if (!formsValid()) {
+        alert("Please fill out all fields")
         return;
     }
-    */
+    
         if (!emailValidation(values.email) || isEmpty(values.email)) {
         alert("invalid email");
         return;
@@ -49,8 +49,8 @@ async function createAccount(event) {
         alert("invalid phone");
         return;
     }
-  
     
+      
     const userData = {
         fname: values.fname.trim(),
         lname: values.lname.trim(),
@@ -69,7 +69,7 @@ try{
     
     });
 if (response.status === 200) {
-    alert("Submission");
+    navigate('/login');
 }
 else{
     alert("failure");
@@ -80,9 +80,8 @@ else{
 }
 
 function continueGuest() {
-    alert("Placeholder")
+    navigate('/Data')
 }
-
 
 
 
@@ -104,16 +103,16 @@ function phoneValidation(phone) {
     return true;
 }
 function formsValid() {
-    let flag = true;
+  
     //Only put these four because the rest are check on there own. The point of this function is to check if all the forms are empty;
     let form = [values.fname,values.lname,values.password,values.address];
-    for(let i = 0;i<forms.length;i++) {
+    for(let i = 0;i<form.length;i++) {
         if (isEmpty(form[i])) {
-            flag = false;
-            break;
+            return false;
+            
         }
     }
-    return flag;
+    return true;
 }
 
 
@@ -126,6 +125,7 @@ function formsValid() {
             <Helmet>
                 <script src="http://localhost:5173"></script>
                 <title>Create Account</title>
+                
             </Helmet>
 
             <h1 id={"welcomeText"}>Create an account with us today! </h1>
@@ -236,6 +236,7 @@ function formsValid() {
                 name={"phoneNumber"}
                 value={values.phoneNumber}
                 onChange={handleInputChange}
+                
             />
 
             <FormControl style={{
@@ -270,6 +271,7 @@ function formsValid() {
                             left: '-10px',
 
                         }}
+                        
                         onClick={createAccount}>Create Account
                 </button>
 

@@ -4,8 +4,7 @@ import {Helmet} from "react-helmet";
 import logo from '../assets/cirlceRounded.png';
 import "../App.css";
 import {Visibility, VisibilityOff} from "@mui/icons-material";
-
-
+import { useNavigate } from 'react-router-dom';
 function Login() {
     //Sets the state for the username and password; Both of these states are updated through the textFields
     const [username, setUsername] = useState('');
@@ -15,8 +14,8 @@ function Login() {
     const [emptyPassword,setEmptyPassword] = useState(false);
     //if the username or password is wrong
     const [invalidInformation,setInvalidInformation] = useState(false);
-
-
+    const navigate = useNavigate();
+    
     //resets username and password after they are used
     function clear() {
         setUsername('');
@@ -28,7 +27,7 @@ function Login() {
         //if null or empty return true
         if (!textField || textField === '' ) return true;
         //else return false
-        return false
+        return false;
     }
 
 
@@ -44,9 +43,7 @@ function Login() {
     }
 
     //Function for creation of an account
-    function createAccount() {
-        alert("Placeholder");
-    }
+   
    function handleKeyDown(event) {
         event.preventDefault() // to prevent the default of onclick from being called
         if (event.key === "Enter") {
@@ -97,7 +94,7 @@ function Login() {
 
             });
             if (response.status === 200) {
-                
+                navigate('/Data')
             }
             else{
                 alert("invalid information");
@@ -130,11 +127,13 @@ function Login() {
         setInvalidInformation(false);
     }
     //Only works if on click is triggered first fix that later
-
+    function createAccount() {
+       navigate('/creation');
+    }
 
     //Control the function for continue as guest
-    function continueAsGuest(prop) {
-        alert(`PlaceHolder`);
+    function continueAsGuest() {
+        navigate('/Data')
     }
 
 
