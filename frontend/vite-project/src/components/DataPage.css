@@ -26,3 +26,11 @@ body {
     min-width: 320px;
     min-height: 115vh;
 }
+#dataPageTitle {
+    position: relative;
+    top: -550px;
+}
+#dataPageSub {
+    position: relative;
+    top: -550px;
+}

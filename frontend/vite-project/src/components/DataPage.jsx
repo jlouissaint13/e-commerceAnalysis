@@ -11,11 +11,15 @@ function DataPage() {
     return (
         <>
             <Helmet>
-                <title>Data Page</title>
+                <title>Data Visualization</title>
             </Helmet>
+            <div>
+                <h1 id="dataPageTitle">Data Visualization</h1>
+            </div>
+            <div>
+                <h2 id="dataPageSub">A Collection of Insightful Charts and Graphs on Ecommerce Data</h2>
+            </div>
 
-            <h1 id="dataPageTitle">DataPage</h1>
-            
         </>
     );
 }
