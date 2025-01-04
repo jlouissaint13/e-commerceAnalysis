@@ -24,8 +24,9 @@ def receiveAccount():
     phoneNumber = data.get('phoneNumber')
     print(fname,lname,email,password,address,phoneNumber)
     createModel1 = CreateModel(fname,lname,email,password,address,phoneNumber)
-    if(createModel1.createUser()):
+    if(createModel1.createUser() == 0):
         print(email,password)
         return jsonify({"message": "Valid submission continue"}),200
-
+    elif(createModel1.createUser() == 1):
+        return jsonify({"message": "Account already exists"}),400
     return jsonify({"message": "Invalid submission" }),401

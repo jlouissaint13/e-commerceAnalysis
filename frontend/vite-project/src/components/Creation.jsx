@@ -71,6 +71,9 @@ try{
 if (response.status === 200) {
     navigate('/login');
 }
+if (response.status === 400) {
+    alert("Account already exists!")
+}
 else{
     alert("failure");
 }
