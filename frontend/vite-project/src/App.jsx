@@ -10,7 +10,7 @@ function App() {
 
            <BrowserRouter>
                <Routes>
-                   <Route index={<Login/>} />
+                   <Route index element={<Login/>} />
                    <Route path="/Login" element={<Login/>}/>
                    <Route path="/Creation" element={<Creation/>}/>
                    <Route path={'/Data'} element={<DataPage/>}/>
